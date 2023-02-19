@@ -26,4 +26,15 @@ export class CustomersComponent implements OnInit{
   getBills(customer: any) {
     this.router.navigateByUrl(`/bills/${customer.id}`)
   } 
+
+  deleteCustomer(id:any){
+    this.http.delete("http://localhost:8888/CUSTOMER-SERVICE/delete_customer/" + id).subscribe(
+      (data)=>{
+        window.location.reload();  
+      },
+      (error)=>{
+        console.log(error);
+      }
+    );   
+  }
 }

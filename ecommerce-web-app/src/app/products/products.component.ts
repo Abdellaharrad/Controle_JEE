@@ -21,4 +21,15 @@ export class ProductsComponent implements OnInit {
       error : (err) => {}
     });
   }
+
+  deleteProduct(id:any){
+    this.http.delete("http://localhost:8888/PRODUCT-SERVICE/delete_product/" + id).subscribe(
+      (data)=>{
+        window.location.reload();  
+      },
+      (error)=>{
+        console.log(error);
+      }
+    );   
+  }
 }

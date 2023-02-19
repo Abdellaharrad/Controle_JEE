@@ -1,7 +1,8 @@
 package org.sid.customerservice;
 
+
 import org.sid.customerservice.entities.Customer;
-import org.sid.customerservice.repositories.CustomerRepository;
+import org.sid.customerservice.repository.CustomerRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,18 +16,17 @@ public class CustomerServiceApplication {
 		SpringApplication.run(CustomerServiceApplication.class, args);
 	}
 	@Bean
-	CommandLineRunner start(CustomerRepository customerRepository, RepositoryRestConfiguration restConfiguration){
+	 CommandLineRunner start(CustomerRepository customerRepository, RepositoryRestConfiguration restConfiguration)
+	{
 		restConfiguration.exposeIdsFor(Customer.class);
 		return args -> {
-			customerRepository.save(new Customer(null,"Abdellah","abdellah@gmail.com"));
-			customerRepository.save(new Customer(null,"Oussama","Oussama@gmail.com"));
-			customerRepository.save(new Customer(null,"Hamza","Hamza@gmail.com"));
-			customerRepository.findAll().forEach(c->{
-						System.out.println(c.toString());
-
-					}
-					);
+			customerRepository.save(new Customer(null,"ayoub","ayoub@gmail.com"));
+			customerRepository.save(new Customer(null,"ayoub1","ayoub1@gmail.com"));
+			customerRepository.save(new Customer(null,"ayoub2","ayoub2@gmail.com"));
+			customerRepository.findAll().forEach( c ->{
+				System.out.println(c.toString());
+			} );
 		};
-	};
+	}
 
 }

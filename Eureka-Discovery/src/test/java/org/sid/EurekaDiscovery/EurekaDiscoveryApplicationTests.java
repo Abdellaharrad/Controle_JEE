@@ -1,4 +1,4 @@
-package org.sid.EurekaDiscovery;
+package org.sid.eurekadiscovery;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

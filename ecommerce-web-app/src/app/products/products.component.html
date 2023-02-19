@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <div class="container">
+  <div style="float: right;">
+    <button [routerLink]="['/add-product']" class="btn" style="background: #631CD6; color: #fff;">+ New Product</button>
+  </div>
   <table class="table table-striped" *ngIf="products">
     <thead>
       <tr>
-        <th>ID</th><th>Name</th><th>Price</th><th>Quantity</th>
+        <th>ID</th><th>Name</th><th>Price</th><th>Quantity</th><th>Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -12,6 +15,9 @@
           <td>{{product.name}}</td>
           <td>{{product.price}}</td>
           <td>{{product.quantity}}</td>
+          <td >
+            <button class="btn" style="background: #e91d49; color: #fff; margin-left: 5px;" (click)="deleteProduct(product.id)">Delete</button>
+          </td>
       </tr>
     </tbody>
   </table>

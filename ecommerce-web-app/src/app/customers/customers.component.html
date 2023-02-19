@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<div class="container">
+<div class="container col-9">
+  <div style="float: right;">
+    <button [routerLink]="['/add-customer']" class="btn" style="background: #631CD6; color: #fff;">+ New Customer</button>
+  </div>
   <table class="table table-striped" *ngIf="customers">
     <thead>
       <tr>
-        <th>ID</th><th>Name</th><th>Email</th>
+        <th>ID</th><th>Name</th><th>Email</th><th>Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -11,8 +14,9 @@
           <td>{{customer.id}}</td>
           <td>{{customer.name}}</td>
           <td>{{customer.email}}</td>
-          <td>
-            <button class="btn btn-success" (click)="getBills(customer)">Orders</button>
+          <td >
+            <button class="btn" style="background: #631CD6; color: #fff;" (click)="getBills(customer)">Orders</button>
+            <button class="btn" style="background: #e91d49; color: #fff; margin-left: 5px;" (click)="deleteCustomer(customer.id)">Delete</button>
           </td>
       </tr>
     </tbody>

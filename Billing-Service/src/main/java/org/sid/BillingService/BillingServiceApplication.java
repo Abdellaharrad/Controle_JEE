@@ -1,13 +1,13 @@
-package org.sid.BillingService;
+package org.sid.billingservice;
 
-import org.sid.BillingService.entities.Bill;
-import org.sid.BillingService.entities.ProductItem;
-import org.sid.BillingService.feign.CustomerRestClient;
-import org.sid.BillingService.feign.ProductItemRestClient;
-import org.sid.BillingService.model.Customer;
-import org.sid.BillingService.model.Product;
-import org.sid.BillingService.repositories.BillRepository;
-import org.sid.BillingService.repositories.ProductItemRepository;
+import org.sid.billingservice.entities.Bill;
+import org.sid.billingservice.entities.ProductItem;
+import org.sid.billingservice.feign.CustomerRestClient;
+import org.sid.billingservice.feign.ProductItemRestClient;
+import org.sid.billingservice.model.Product;
+import org.sid.billingservice.model.customer;
+import org.sid.billingservice.repository.BillRepository;
+import org.sid.billingservice.repository.ProductItemRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -25,23 +25,40 @@ public class BillingServiceApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(BillingServiceApplication.class, args);
 	}
-	@Bean
-	CommandLineRunner start(BillRepository billRepository,
-							ProductItemRepository productItemRepository,
-							CustomerRestClient customerRestClient,
-							ProductItemRestClient productItemRestClient){
+    @Bean
+	CommandLineRunner start(BillRepository billRepository, ProductItemRepository productItemRepository, CustomerRestClient customerRestClient, ProductItemRestClient productItemRestClient){
 		return args -> {
-			Customer customer= customerRestClient.getCustomerById(1L);
-			Bill bill1=billRepository.save(new Bill(null,new Date(),null,customer.getId(),customer));
+
+			customer customer=customerRestClient.getCustomerById(1L);
+			Bill bill1=billRepository.save(new Bill(null, new Date(),null,customer.getId(),null));
 			PagedModel<Product> productPagedModel=productItemRestClient.pageProducts();
-			productPagedModel.forEach(p->{
-				ProductItem productItem = new ProductItem();
-				productItem.setPrice(p.getPrice());
-				productItem.setProductId(p.getId());
-				productItem.setQuantity(1+new Random().nextInt(100));
-				productItem.setBill(bill1);
-				productItemRepository.save(productItem);
-			});
+			productPagedModel.forEach(
+					p->{
+						ProductItem productItem= new ProductItem();
+						productItem.setPrice(p.getPrice());
+						productItem.setQuantity(1+new Random().nextInt(100));
+						productItem.setBill(bill1);
+						productItem.setProductID(p.getId());
+						productItemRepository.save(productItem);
+					}
+			);
+			System.out.println("\n------------------------------------------------\n");
+			Bill bill2=billRepository.save(new Bill(null, new Date(),null,customer.getId(),null));
+			PagedModel<Product> productPagedModel1=productItemRestClient.pageProducts();
+			productPagedModel1.forEach(
+					p->{
+						ProductItem productItem= new ProductItem();
+						productItem.setPrice(p.getPrice());
+						productItem.setQuantity(1+new Random().nextInt(100));
+						productItem.setBill(bill2);
+						productItem.setProductID(p.getId());
+						productItemRepository.save(productItem);
+					}
+			);
+
+
+
+
 		};
 	}
 }
