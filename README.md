@@ -55,15 +55,3 @@
 <p align="center">
 <img alt="Sign_in" src="https://user-images.githubusercontent.com/78284492/206851577-6a64f255-94d5-4f3a-87d7-43ea9af0d876.PNG" width="1000" height="300" />
 </p>
->realm client
-![realmClient](https://user-images.githubusercontent.com/80205641/219975209-417b1b24-6a6d-4190-a8f3-fc70239202f5.PNG)
->realm roles
-![realmRoles](https://user-images.githubusercontent.com/80205641/219975219-7f5797d4-ec10-4ee8-bb4e-5476b73dd2e7.PNG)
->realm settings
-![realmSettings](https://user-images.githubusercontent.com/80205641/219975228-a5a344be-123c-4b26-850c-bb0ac4aa048d.PNG)
->realm Users
-![realmUsersAbdellah](https://user-images.githubusercontent.com/80205641/219975235-ed7fb43d-88b8-4411-8b71-c52150210215.PNG)
->TEST JWT TOKEN
-![keycloackTestJwtAbdellah](https://user-images.githubusercontent.com/80205641/219975274-c9196680-012e-40f7-8fbd-217ae6adb29c.PNG)
-![Keycloack-PostmanAbdellah](https://user-images.githubusercontent.com/80205641/219975282-87c4ff60-f538-41a3-b7b9-0ec7252137c2.PNG)
-![Keycloack-PostmanAbdellah2](https://user-images.githubusercontent.com/80205641/219975286-1f761362-913e-4793-9d83-9d430d6e9b42.PNG)
